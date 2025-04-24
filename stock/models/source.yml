@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: raw
+    database: dev
+    schema: raw
+    description: "Schema which stores raw stock tables"
+    tables:
+      - name: stock_price
+        identifier: stock_price
+        description: "Stock data including symbol, date, open, high, low, close, volume"
+        
+  - name: staging
+    database: dev
+    schema: staging
+    description: "Schema stores intermediary tables before complete transformation"
+    tables:
+      - name: stock_price_diff
+        identifier: stock_price_diff
+        description: "Intermediary table, includes price difference, gain and loss"
+      - name: stock_rolling_average
+        identifier: stock_rolling_average
+        description: "Intermediary table, includes avg_gain, avg_loss and rsi"
+
+  - name: analytics
+    database: dev
+    schema: analytics
+    description: "Schema which stores analytics tables (ELT)"
+    tables:
+      - name: stock_summary
+        identifier: stock_summary
+        description: "Complete stock info"

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stock_summary
+    description: "Model storing stock price and indicators"
+    tests:
+      - unique:
+          column_name: "(symbol || '-' || date)"
+
+    columns:
+      - name: symbol
+        description: "Stock symbol"
+        tests:
+          - not_null
+      - name: date
+        description: "Date of stock price"
+        tests:
+          - not_null
